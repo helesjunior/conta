@@ -25,7 +25,7 @@ class AdminController extends Controller
     {
         $this->data['title'] = trans('backpack::base.dashboard'); // set the page title
         $this->data['breadcrumbs'] = [
-            trans('SisPess')     => backpack_url('dashboard'),
+            trans('Conta')     => backpack_url('dashboard'),
             trans('Início') => false,
         ];
 

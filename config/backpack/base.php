@@ -24,7 +24,7 @@ return [
     // ----
 
     // Project name. Shown in the window title.
-    'project_name' => 'SisPess',
+    'project_name' => 'Conta',
 
     // When clicking on the admin panel's top-left logo/name,
     // where should the user be redirected?
@@ -71,7 +71,7 @@ return [
     // ------
 
     // Menu logo. You can replace this with an <img> tag if you have a logo.
-    'project_logo'   => '<b>Sis</b>Pess',
+    'project_logo'   => 'Conta',
 
     // Show / hide breadcrumbs on admin panel pages.
     'breadcrumbs' => true,
