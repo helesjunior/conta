@@ -16,10 +16,16 @@ class Estados extends Model
     */
 
     protected $table = 'estados';
-    // protected $primaryKey = 'id';
+    protected $primaryKey = 'codigo_uf';
     // public $timestamps = false;
-    protected $guarded = ['id'];
-    // protected $fillable = [];
+    //protected $guarded = ['codigo_uf'];
+    protected $fillable = [
+        'codigo_uf',
+        'uf',
+        'nome',
+        'latitude',
+        'longitude',
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 

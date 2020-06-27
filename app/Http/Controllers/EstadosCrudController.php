@@ -26,7 +26,7 @@ class EstadosCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel('\App\Models\Estados');
+        CRUD::setModel(\App\Models\Estados::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/estados');
         CRUD::setEntityNameStrings('estados', 'estados');
     }
