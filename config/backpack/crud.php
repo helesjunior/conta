@@ -29,6 +29,9 @@ return [
             // whenever the user tries to see that page, backpack loads the previous pagination and filtration
             'persistentTable' => true,
 
+            // show search bar in the top-right corner?
+            'searchableTable' => true,
+
             // the time the table will be persisted in minutes
             // after this the table info is cleared from localStorage.
             // use false to never force localStorage clear. (default)
@@ -52,6 +55,13 @@ return [
             // - 2-3 - more important than the rest of the columns
             // - 4 - less important than most columns
             'actionsColumnPriority' => 1,
+
+            // Show a "Reset" button next to the List operation subheading
+            // (Showing 1 to 25 of 9999 entries. Reset)
+            // that allows the user to erase local storage for that datatable,
+            // thus clearing any searching, filtering or pagination that has been
+            // remembered and persisted using persistentTable
+            'resetButton' => true,
         ],
 
         /*
@@ -79,6 +89,9 @@ return [
             // When the user chooses "save and back" or "save and new", show a bubble
             // for the fact that the default save action has been changed?
             'showSaveActionChange' => true, //options: true, false
+
+            // Should we show a cancel button to the user?
+            'showCancelButton' => true,
 
             // Before saving the entry, how would you like the request to be stripped?
             // - false - ONLY save inputs that have fields (safest)
@@ -113,6 +126,9 @@ return [
             // for the fact that the default save action has been changed?
             'showSaveActionChange' => true, //options: true, false
 
+            // Should we show a cancel button to the user?
+            'showCancelButton' => true,
+
             // Before saving the entry, how would you like the request to be stripped?
             // - false - Save ONLY inputs that have a field (safest, default);
             // - [x, y, z] - Save ALL inputs, EXCEPT the ones given in this array;
@@ -136,15 +152,6 @@ return [
             // Define the size/looks of the content div for all CRUDs
             // To override per Controller use $this->crud->setReorderContentClass('class-string')
             'contentClass'   => 'col-md-8 col-md-offset-2',
-        ],
-
-        /*
-         * Revisions Operation
-         */
-        'revisions' => [
-            // Define the size/looks of the content div for all CRUDs
-            // To override per view use $this->crud->setRevisionsTimelineContentClass('class-string')
-            'timelineContentClass' => 'col-md-12',
         ],
 
     ],
@@ -275,7 +282,7 @@ return [
         // "en_GB" => "English (United Kingdom)",
         // "en_US" => "English (United States)",
         // "en_ZW" => "English (Zimbabwe)",
-        // 'en' => 'English',
+        'en' => 'English',
         // "eo" => "Esperanto",
         // "et_EE" => "Estonian (Estonia)",
         // "et" => "Estonian",
@@ -319,7 +326,7 @@ return [
         // "fr_SN" => "French (Senegal)",
         // "fr_CH" => "French (Switzerland)",
         // "fr_TG" => "French (Togo)",
-        // 'fr' => 'French',
+        'fr' => 'French',
         // "ff_SN" => "Fulah (Senegal)",
         // "ff" => "Fulah",
         // "gl_ES" => "Galician (Spain)",
@@ -365,7 +372,7 @@ return [
         // "ga" => "Irish",
         // "it_IT" => "Italian (Italy)",
         // "it_CH" => "Italian (Switzerland)",
-        // 'it' => 'Italian',
+        'it' => 'Italian',
         // "ja_JP" => "Japanese (Japan)",
         // "ja" => "Japanese",
         // "kea_CV" => "Kabuverdianu (Cape Verde)",
@@ -470,7 +477,7 @@ return [
         // "pa" => "Punjabi",
         // "ro_MD" => "Romanian (Moldova)",
         // "ro_RO" => "Romanian (Romania)",
-        // 'ro' => 'Romanian',
+        'ro' => 'Romanian',
         // "rm_CH" => "Romansh (Switzerland)",
         // "rm" => "Romansh",
         // "rof_TZ" => "Rombo (Tanzania)",

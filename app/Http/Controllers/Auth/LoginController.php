@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace app\Http\Controllers\Auth;
 
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Adldap\Laravel\Facades\Adldap;
+use Backpack\CRUD\app\Library\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Adldap\Laravel\Facades\Adldap;
-use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -65,18 +64,14 @@ class LoginController extends Controller
     }
 
     /**
-     * Log the user out and redirect him to specific location.
+     * The user has logged out of the application.
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
-    public function logout(Request $request)
+    protected function loggedOut(Request $request)
     {
-        // Do the default logout procedure
-        $this->guard()->logout();
-
-        // And redirect to custom location
         return redirect($this->redirectAfterLogout);
     }
 
@@ -89,7 +84,6 @@ class LoginController extends Controller
     {
         return backpack_auth();
     }
-
 
     protected function attemptLogin(Request $request)
     {
@@ -105,11 +99,11 @@ class LoginController extends Controller
 
         if (Adldap::auth()->attempt($userdn, $password, $bindAsUser = true)) {
 
-            $user = \App\User::where($this->username(), $username)->first();
+            $user = \App\Models\User::where($this->username(), $username)->first();
 
             if (!$user) {
 
-                $user = new \App\User();
+                $user = new \App\Models\User();
                 $user->username = $username;
                 $user->password = '';
 
@@ -201,5 +195,4 @@ class LoginController extends Controller
 
         return view(backpack_view('auth.login'), $this->data);
     }
-    
 }

@@ -67,8 +67,9 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'ldap', //eloquent
-            'model' => App\Models\BackpackUser::class,
+            'driver' => 'ldap',
+//            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [

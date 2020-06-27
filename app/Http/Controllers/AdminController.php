@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace app\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
@@ -23,13 +23,13 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $this->data['title'] = trans('backpack::base.dashboard'); // set the page title
+        $this->data['title'] = trans('Início'); // set the page title
         $this->data['breadcrumbs'] = [
             trans('Conta')     => backpack_url('dashboard'),
             trans('Início') => false,
         ];
 
-        return view('backpack::base.dashboard', $this->data);
+        return view(backpack_view('dashboard'), $this->data);
     }
 
     /**
