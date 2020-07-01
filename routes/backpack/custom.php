@@ -21,7 +21,14 @@ Route::group([
 //        Route::get('/dashboard', 'AdminController@redirect')->name('backpack');
     }
 
+    Route::group([
+            'namespace' => 'Admin',
+        ], function () {
+        Route::crud('usuarios', 'UserCrudController');
+        Route::crud('estados', 'EstadosCrudController');
+        Route::crud('municipios', 'MunicipiosCrudController');
+    });
 
-    Route::crud('estados', 'EstadosCrudController');
-    Route::crud('municipios', 'MunicipiosCrudController');
+
+
 }); // this should be the absolute last line of this file

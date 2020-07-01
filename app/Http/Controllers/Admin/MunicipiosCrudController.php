@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\MunicipiosRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;

@@ -1,10 +1,11 @@
 <?php
 
-namespace Backpack\PermissionManager\app\Http\Controllers;
+namespace app\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
+use App\Http\Requests\UsersRequest;
 use Backpack\PermissionManager\app\Http\Requests\UserStoreCrudRequest as StoreRequest;
-use Backpack\PermissionManager\app\Http\Requests\UserUpdateCrudRequest as UpdateRequest;
+use app\Http\Requests\UserUpdateCrudRequest as UpdateRequest;
 use Illuminate\Support\Facades\Hash;
 
 class UserCrudController extends CrudController
@@ -16,15 +17,19 @@ class UserCrudController extends CrudController
 
     public function setup()
     {
-        $this->crud->setModel(config('backpack.permissionmanager.models.user'));
+        $this->crud->setModel(\App\Models\User::class);
         $this->crud->setEntityNameStrings(trans('backpack::permissionmanager.user'), trans('backpack::permissionmanager.users'));
-        $this->crud->setRoute(backpack_url('user'));
+        $this->crud->setRoute(backpack_url('usuarios'));
     }
 
     public function setupListOperation()
     {
         $this->crud->setColumns([
             [
+                'name'  => 'cpf',
+                'label' => 'CPF',
+                'type'  => 'text',
+            ],[
                 'name'  => 'name',
                 'label' => trans('backpack::permissionmanager.name'),
                 'type'  => 'text',
@@ -86,13 +91,13 @@ class UserCrudController extends CrudController
     public function setupCreateOperation()
     {
         $this->addUserFields();
-        $this->crud->setValidation(StoreRequest::class);
+        $this->crud->setValidation(UsersRequest::class);
     }
 
     public function setupUpdateOperation()
     {
         $this->addUserFields();
-        $this->crud->setValidation(UpdateRequest::class);
+        $this->crud->setValidation(UsersRequest::class);
     }
 
     /**
@@ -129,16 +134,17 @@ class UserCrudController extends CrudController
     protected function handlePasswordInput($request)
     {
         // Remove fields not present on the user.
+        $request->request->remove('password');
         $request->request->remove('password_confirmation');
         $request->request->remove('roles_show');
         $request->request->remove('permissions_show');
 
         // Encrypt password if specified.
-        if ($request->input('password')) {
-            $request->request->set('password', Hash::make($request->input('password')));
-        } else {
-            $request->request->remove('password');
-        }
+//        if ($request->input('password')) {
+//            $request->request->set('password', Hash::make($request->input('password')));
+//        } else {
+//            $request->request->remove('password');
+//        }
 
         return $request;
     }
@@ -147,25 +153,39 @@ class UserCrudController extends CrudController
     {
         $this->crud->addFields([
             [
+                'name'  => 'cpf',
+                'label' => 'CPF',
+                'type'  => 'text',
+                'attributes' => [
+                    'readonly'    => 'readonly',
+                ],
+            ],
+            [
                 'name'  => 'name',
                 'label' => trans('backpack::permissionmanager.name'),
                 'type'  => 'text',
+                'attributes' => [
+                    'readonly'    => 'readonly',
+                ],
             ],
             [
                 'name'  => 'email',
                 'label' => trans('backpack::permissionmanager.email'),
                 'type'  => 'email',
+                'attributes' => [
+                    'readonly'    => 'readonly',
+                ],
             ],
-            [
-                'name'  => 'password',
-                'label' => trans('backpack::permissionmanager.password'),
-                'type'  => 'password',
-            ],
-            [
-                'name'  => 'password_confirmation',
-                'label' => trans('backpack::permissionmanager.password_confirmation'),
-                'type'  => 'password',
-            ],
+//            [
+//                'name'  => 'password',
+//                'label' => trans('backpack::permissionmanager.password'),
+//                'type'  => 'password',
+//            ],
+//            [
+//                'name'  => 'password_confirmation',
+//                'label' => trans('backpack::permissionmanager.password_confirmation'),
+//                'type'  => 'password',
+//            ],
             [
                 // two interconnected entities
                 'label'             => trans('backpack::permissionmanager.user_role_permission'),
