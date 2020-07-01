@@ -5,7 +5,7 @@ namespace App\Models;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class Estados extends Model
+class Municipios extends Model
 {
     use CrudTrait;
 
@@ -15,16 +15,18 @@ class Estados extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $table = 'estados';
-//    protected $primaryKey = 'codigo_uf';
+    protected $table = 'municipios';
+    // protected $primaryKey = 'id';
     // public $timestamps = false;
-    //protected $guarded = ['codigo_uf'];
-    protected $fillable = [
-        'uf',
-        'nome',
-        'latitude',
-        'longitude',
-    ];
+    protected $guarded = ['id'];
+     protected $fillable = [
+         'codigo_ibge',
+         'nome',
+         'latitude',
+         'longitude',
+         'capital',
+         'estado_id',
+     ];
     // protected $hidden = [];
     // protected $dates = [];
 

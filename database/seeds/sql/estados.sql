@@ -1,12 +1,3 @@
-CREATE TABLE estados(
-    codigo_uf INT NOT NULL,
-    uf VARCHAR(2) NOT NULL,
-    nome VARCHAR(100) NOT NULL,
-    latitude FLOAT(8) NOT NULL,
-    longitude FLOAT(8) NOT NULL,
-    PRIMARY KEY (codigo_uf)
-);
-
 INSERT INTO estados VALUES
 (11,'RO','Rondônia',-10.83,-63.34),
 (12,'AC','Acre',-8.77,-70.55),
@@ -34,4 +25,4 @@ INSERT INTO estados VALUES
 (50,'MS','Mato Grosso do Sul',-20.51,-54.54),
 (51,'MT','Mato Grosso',-12.64,-55.42),
 (52,'GO','Goiás',-15.98,-49.86),
-(53,'DF','Distrito Federal',-15.83,-47.86)
+(53,'DF','Distrito Federal',-15.83,-47.86);
